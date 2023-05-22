@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Astrid Feringa</title>
+  <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  {{ range where .Site.Pages "Title" "about" }}
+  <div class="collapse">
+    <h2 class="toggle">{{ .Params.label }}</h2>
+    <div class="content">
+      {{ .Content }}
+    </div>
+    <span class="toggle close">&uarr;</span>
+  </div>
+  {{ end }}
+
+  {{ range $index, $element := (sort (where .Site.RegularPages "Section" "projects") ".Params.start_year" "desc")}}
+  <div class="collapse">
+    <h2 class="toggle">{{ .Title }} ({{.Params.start_year}}{{ if or (.Params.ongoing) (and (.Params.end_year) (ne .Params.start_year .Params.end_year)) }}&mdash;{{ if .Params.ongoing }}ongoing{{ else }}{{ .Params.end_year }}{{ end }}{{ end }})</h2>
+
+    <div class="content">
+    {{ .Content | safeHTML }}
+    </div>
+
+    {{ if gt (len .Params.gallery) 0 }}
+    <div class="gallery gallery-{{ $index }}">
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&larr;</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&rarr;</button>
+      </div>
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          {{ range .Params.gallery }}
+            <li class="glide__slide"><img src="{{ . }}"></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    {{ end }}
+
+    <span class="toggle close">&uarr;</span>
+  </div>
+  {{ end }}
+
+  {{ range where .Site.Pages "Title" "media" }}
+   <div class="collapse">
+     <h2 class="toggle">Media</h2>
+     <div class="content">
+       {{ .Content }}
+     </div>
+     <span class="toggle close">&uarr;</span>
+   </div>
+   {{ end }}
+
+
+  <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+* { box-sizing: border-box }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.75rem;
+  line-height: 120%;
+  padding-bottom: 0rem;
+  max-width: 60rem;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: #000;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 1em;
+  margin: 0;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  text-indent: -2rem;
+}
+
+p {
+  margin: 0;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.content {
+  padding-left: 3rem;
+  /* hier staat ie astrid */
+}
+
+img,
+video {
+  width: 100%;
+  margin: 0;
+}
+
+.gallery,
+.content,
+.toggle.close {
+  display: none;
+}
+
+.collapse.active .gallery,
+.collapse.active .content,
+.collapse.active .toggle.close {
+  display: block;
+}
+
+.toggle.close {
+  cursor: pointer;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.glide__arrow {
+  background: none;
+  border: none;
+  font-size: 1em;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.glide__slides {
+  margin-top: -1rem;
+}
+
+.glide__arrow--right {
+  float: right;
+}
+
+.collapse.active h2 {
+  text-decoration: underline;
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
